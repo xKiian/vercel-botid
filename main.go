@@ -1,0 +1,7 @@
+package main
+
+import "botid/botid"
+
+func main() {
+	botid.Decrypt("hwlXXqOuuBBuJJ9X", "UXTDcpG6oeRyhGfg5+uT3Vk4e2GTbTMY5MrsYaZxSrg7jHttZZcdm2LSFtn/G8sjrQMBHGg3PlCKw4XH6gqH5LQos309oM6NNvMRk+6hxf5IQcuzhWLjGuFnBOGxsElRNmPEtsUK3MdhXdBatQI9K8dl3w8qFvTnzYl+enkYkcv9U3uTAC7Zsb7lm7iQ9qkj/Sj39/X44ihK5o5+zKsuE9RxzeuQz7FiZd3L2SG4tUZviCFH6KIWhk111QWfvFGQn9ywY+bFgkQ/vZAHBx5sUXlI8x2lSS6btt66eAihydHasg8Yv78=")
+}
