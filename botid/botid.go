@@ -2,9 +2,7 @@ package botid
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
-	"time"
 
 	http "github.com/bogdanfinn/fhttp"
 	tlsclient "github.com/bogdanfinn/tls-client"
@@ -71,6 +69,7 @@ func (bot *BotID) FetchScript() (*string, error) {
 	return &bodyString, nil
 }
 
+// Verify | this is just if you use the example script url. Don't use this if you modify the example script url!!!!
 func (bot *BotID) Verify(token string) (string, error) {
 	req, err := http.NewRequest(http.MethodPost, "https://botid-testing-pi.vercel.app/api/contact/test", nil)
 	if err != nil {
@@ -119,7 +118,7 @@ func (bot *BotID) GenerateToken() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	start := time.Now()
+
 	ctx, err := ExtractFromScript(script)
 	if err != nil {
 		return "", err
@@ -134,6 +133,6 @@ func (bot *BotID) GenerateToken() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Println(time.Now().Sub(start))
+
 	return string(encoded), nil
 }
