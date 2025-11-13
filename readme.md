@@ -50,6 +50,9 @@ func main() {
 }
 ```
 
+Note: You will need to provide your own webgl fingerprints. Examples can be found in [webgl.json](webgl.json) 
+(You only need webgl_unmasked_vendor & webgl_unmasked_renderer)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
