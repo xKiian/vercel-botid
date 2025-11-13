@@ -1,4 +1,4 @@
-module botid
+module github.com/xkiian/vercel-botid
 
 go 1.25.1
 
