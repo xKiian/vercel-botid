@@ -3,6 +3,7 @@
 <img src="https://wakatime.com/badge/user/839267df-3912-44c6-97f4-9e3f0425b716/project/b8f072ea-5f9f-447c-be17-2976f0b4a6e0.svg" alt="wakatime">
 <br>
 <img src="./assets/showcase.png" alt="showcase">
+
 ---
 
 ## Overview
