@@ -1,9 +1,10 @@
 package main
 
 import (
-	"botid/botid"
 	"fmt"
 	"log"
+
+	"github.com/xkiian/vercel-botid/botid"
 )
 
 func main() {
