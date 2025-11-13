@@ -1,7 +1,23 @@
 package main
 
-import "botid/botid"
+import (
+	"botid/botid"
+	"fmt"
+	"log"
+)
 
 func main() {
-	botid.Decrypt("hwlXXqOuuBBuJJ9X", "UXTDcpG6oeRyhGfg5+uT3Vk4e2GTbTMY5MrsYaZxSrg7jHttZZcdm2LSFtn/G8sjrQMBHGg3PlCKw4XH6gqH5LQos309oM6NNvMRk+6hxf5IQcuzhWLjGuFnBOGxsElRNmPEtsUK3MdhXdBatQI9K8dl3w8qFvTnzYl+enkYkcv9U3uTAC7Zsb7lm7iQ9qkj/Sj39/X44ihK5o5+zKsuE9RxzeuQz7FiZd3L2SG4tUZviCFH6KIWhk111QWfvFGQn9ywY+bFgkQ/vZAHBx5sUXlI8x2lSS6btt66eAihydHasg8Yv78=")
+	solver, err := botid.NewBotID("https://botid-testing-pi.vercel.app/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/a-4-a/c.js?i=0&v=3&h=botid-testing-pi.vercel.app")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	token, err := solver.GenerateToken()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("[+]", token)
+
+	fmt.Println(solver.Verify(token))
 }

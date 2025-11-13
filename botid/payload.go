@@ -14,9 +14,9 @@ type GPUInfo struct {
 	WebGL         []WebGL `json:"webgl"`
 }
 
-type EncryptedPayload struct {
+type FpPayload struct {
 	DomController bool    `json:"p"`
-	RandomSeed    float64 `json:"S"`
+	Seed          float64 `json:"S"`
 	GpuVendor     struct {
 		UnmaskedVendorWebgl   string `json:"v"`
 		UnmaskedRendererWebgl string `json:"r"`
@@ -27,6 +27,15 @@ type EncryptedPayload struct {
 	Devtools2 bool `json:"d"`
 }
 
+type Payload struct {
+	Arg1      float64 `json:"b"`
+	Rand      float64 `json:"v"`
+	Signature string  `json:"e"`
+	Fp        string  `json:"s"`
+	Arg2      float64 `json:"d"`
+	Version   string  `json:"vr"`
+}
+
 var gpus []GPUInfo
 
 func init() {
@@ -35,7 +44,7 @@ func init() {
 		panic(err)
 	}
 	defer file.Close()
-	
+
 	decoder := json.NewDecoder(file)
 	err = decoder.Decode(&gpus)
 	if err != nil {
@@ -43,11 +52,11 @@ func init() {
 	}
 }
 
-func BuildPayload(seed float64) EncryptedPayload {
+func buildFp(key string, seed float64) (string, error) {
 	gpu := gpus[rand.Intn(len(gpus))]
-	return EncryptedPayload{
+	fp := FpPayload{
 		DomController: false,
-		RandomSeed:    seed,
+		Seed:          seed,
 		GpuVendor: struct {
 			UnmaskedVendorWebgl   string `json:"v"`
 			UnmaskedRendererWebgl string `json:"r"`
@@ -60,4 +69,21 @@ func BuildPayload(seed float64) EncryptedPayload {
 		Devtools:  false,
 		Devtools2: false,
 	}
+
+	return Encrypt(key, fp)
+}
+
+func BuildPayload(ctx *ScriptCtx) (*Payload, error) {
+	fp, err := buildFp(ctx.key, ctx.seed)
+	if err != nil {
+		return nil, err
+	}
+	return &Payload{
+		Arg1:      ctx.arg1,
+		Rand:      ctx.rand,
+		Signature: ctx.signature,
+		Fp:        fp,
+		Arg2:      ctx.arg2,
+		Version:   ctx.version,
+	}, nil
 }
