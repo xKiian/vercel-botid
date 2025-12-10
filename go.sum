@@ -28,8 +28,8 @@ github.com/t14raptor/go-fast v0.0.4 h1:48k3hIS7rx20iq+kJx39XpKaBi5k+etCtl9AXHRd0
 github.com/t14raptor/go-fast v0.0.4/go.mod h1:IyzuItbJu1DY1z+xBRE9Bk/jCvaJEFG/yeSupi/2HDU=
 github.com/tam7t/hpkp v0.0.0-20160821193359-2b70b4024ed5 h1:YqAladjX7xpA6BM04leXMWAEjS0mTZ5kUU9KRBriQJc=
 github.com/tam7t/hpkp v0.0.0-20160821193359-2b70b4024ed5/go.mod h1:2JjD2zLQYH5HO74y5+aE3remJQvl6q4Sn6aWA2wD1Ng=
-github.com/xkiian/obfio-deobfuscator v0.0.0-20251113192100-e78b1eb7d21a h1:y6/WsAVMTpNDXSa9OCTAqSjH7OfL4cts+S5oH13QaEE=
-github.com/xkiian/obfio-deobfuscator v0.0.0-20251113192100-e78b1eb7d21a/go.mod h1:zo6Ks/6s2keW4xwUbcXzUDRioVn96j7Rr/luy05gtgE=
+github.com/xkiian/obfio-deobfuscator v0.0.0-20251210115027-1cdd8a96367e h1:wo3YOk4Kzj41Q0EOLt0+gGiC59/Ht9MpjJOqf884HPo=
+github.com/xkiian/obfio-deobfuscator v0.0.0-20251210115027-1cdd8a96367e/go.mod h1:zo6Ks/6s2keW4xwUbcXzUDRioVn96j7Rr/luy05gtgE=
 github.com/xyproto/randomstring v1.0.5 h1:YtlWPoRdgMu3NZtP45drfy1GKoojuR7hmRcnhZqKjWU=
 github.com/xyproto/randomstring v1.0.5/go.mod h1:rgmS5DeNXLivK7YprL0pY+lTuhNQW3iGxZ18UQApw/E=
 go.uber.org/mock v0.5.0 h1:KAMbZvZPyBPWgD14IrIQ38QCyjwpvVVV6K/bHl1IwQU=

@@ -18,6 +18,8 @@ func ExtractFromScript(script *string) (*ScriptCtx, error) {
 
 	deobf.Deobfuscate(parsed) // magic!!
 	simplifier.Simplify(parsed, false)
+	ReplaceFromCharCode(parsed)
+	simplifier.Simplify(parsed, false) //its just for string addition but i cba
 
 	//os.WriteFile("out.js", []byte(generator.Generate(parsed)), 0644)
 
@@ -92,34 +94,74 @@ func (v *ScriptCtx) VisitCallExpression(n *ast.CallExpression) {
 		v.version = arg5.Value
 	case 2:
 
-		binaryExpr, ok := args[0].Expr.(*ast.BinaryExpression)
+		callExpr, ok := args[0].Expr.(*ast.CallExpression)
 		if !ok {
 			return
 		}
 
-		if binaryExpr.Operator.String() != "+" {
-			return
-		}
-
-		left, ok := binaryExpr.Left.Expr.(*ast.Identifier)
+		callee, ok := callExpr.Callee.Expr.(*ast.MemberExpression)
 		if !ok {
 			return
 		}
-		found := v.assignments[left.ToId()]
+
+		prop, ok := callee.Property.Prop.(*ast.Identifier)
+		if !ok {
+			return
+		}
+		if prop.Name != "join" {
+			return
+		}
+
+		elements, ok := callee.Object.Expr.(*ast.ArrayLiteral)
+		if !ok {
+			return
+		}
+
+		first, ok := elements.Value[0].Expr.(*ast.Identifier)
+		if !ok {
+			return
+		}
+		found := v.assignments[first.ToId()]
 		if found == "" {
 			return
 		}
 		v.key = found
 
-		right, ok := binaryExpr.Right.Expr.(*ast.Identifier)
+		second, ok := elements.Value[1].Expr.(*ast.Identifier)
 		if !ok {
 			return
 		}
-		found = v.assignments[right.ToId()]
+		found = v.assignments[second.ToId()]
 		if found == "" {
 			return
 		}
 		v.key += found
+
+		/*if callExpr.Operator.String() != "+" {
+			return
+		}
+
+		left, ok := callExpr.Left.Expr.(*ast.Identifier)
+		if !ok {
+			return
+		}
+		found := v.assignments[left.ToId()]
+		fmt.Print(found)
+		if found == "" {
+			return
+		}
+		v.key = found
+
+		right, ok := callExpr.Right.Expr.(*ast.Identifier)
+		if !ok {
+			return
+		}
+		found = v.assignments[right.ToId()]
+		fmt.Print(found)
+		if found == "" {
+			return
+		}
+		v.key += found*/
 	}
 }
 

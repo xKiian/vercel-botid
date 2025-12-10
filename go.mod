@@ -7,7 +7,6 @@ require (
 	github.com/bogdanfinn/tls-client v1.11.2
 	github.com/bogdanfinn/utls v1.7.4-barnius
 	github.com/t14raptor/go-fast v0.0.4
-	github.com/xkiian/obfio-deobfuscator v0.0.0-20251113192100-e78b1eb7d21a
 )
 
 require (
@@ -20,6 +19,7 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
 	github.com/tam7t/hpkp v0.0.0-20160821193359-2b70b4024ed5 // indirect
+	github.com/xkiian/obfio-deobfuscator v0.0.0-20251210115027-1cdd8a96367e // indirect
 	go.uber.org/mock v0.5.0 // indirect
 	golang.org/x/crypto v0.36.0 // indirect
 	golang.org/x/mod v0.18.0 // indirect
